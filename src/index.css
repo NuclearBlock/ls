@@ -24,13 +24,13 @@ a {
 
 #menu a {
   padding: 0 10px;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   color: #ccc;
   transition:  all 0.3s;
 }
 
 #menu a:hover {
-  color: #eee;
+  color: #64bdac;
 }
 
 #search input {
@@ -52,7 +52,29 @@ a {
 
 #submenu {
   padding: 5px 20px;
-  background-color: #666;
-  color: #ccc;
-  text-align: right;
+  background-color: #64bdac;
+  color: #333;
+  /* text-align: right; */
+}
+
+#submenu span {
+  margin-top: -5px;
+  padding: 0 10px;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+}
+
+#submenu a {
+  padding: 0 10px;
+  /* font-size: 1.2rem; */
+  color: #eee;
+  transition:  all 0.3s;
+}
+
+#submenu a:hover {
+  color: #fff;
+}
+
+#main {
+  padding: 5px 15px;
 }

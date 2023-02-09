@@ -1,4 +1,4 @@
-export const BlockListPage = () => {
+export default function BlockListPage() {
 
   return (
     <>

@@ -1,4 +1,4 @@
-export const FaucetPage = () => {
+export default function FaucetPage() {
 
   return (
     <>

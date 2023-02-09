@@ -1,6 +1,5 @@
 import React from 'react';
 import Box from '@mui/material/Box';
-import Link from '@mui/material/Link';
 import { NavLink } from "react-router-dom";
 
 import Search from './Search';
@@ -13,7 +12,7 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
 import TerminalIcon from '@mui/icons-material/Terminal';
 
-export const Header = () => {
+export default function Header() {
 
   return (
     <>
@@ -45,7 +44,7 @@ export const Header = () => {
           Logs
         </NavLink>
 
-        <NavLink to="faucet/">
+        <NavLink to="wallet/">
           <AccountBalanceWalletIcon fontSize="medium" sx={{ display: 'inline-flex', mb: '-5px', mr: '3px' }} />
           Wallet
         </NavLink>
@@ -58,9 +57,17 @@ export const Header = () => {
     </div>
 
     <div id="submenu">
-      <NavLink to="settings/">
-        <SettingsIcon fontSize="medium" sx={{ display: 'inline-flex', mb: '-3px' }} />
-      </NavLink>
+      <Box width="70%" display="inline-block">
+          <span>RPC Node: 127.0.0.1:8899</span>
+          <span>Current epoch: 0</span>
+          <span>Current blocks: 0</span>
+          <span>Transactions total: 0</span>
+      </Box>
+      <Box width="30%" display="inline-block" textAlign={"center"}>
+        <NavLink to="settings/">
+          <SettingsIcon fontSize="medium" sx={{ mb: '-3px' }} />
+        </NavLink>
+      </Box>
     </div>
     </>
   )
