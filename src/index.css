@@ -23,6 +23,7 @@ a {
 }
 
 #menu a {
+  display: inline-flex;
   padding: 0 10px;
   font-size: 1.2rem;
   color: #ccc;
@@ -58,14 +59,14 @@ a {
 }
 
 #submenu span {
-  margin-top: -5px;
+  display: inline-flex;
   padding: 0 10px;
   font-size: 0.8rem;
   text-transform: uppercase;
 }
 
 #submenu a {
-  padding: 0 10px;
+  display: inline-flex;
   /* font-size: 1.2rem; */
   color: #eee;
   transition:  all 0.3s;

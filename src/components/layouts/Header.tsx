@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import { NavLink } from "react-router-dom";
 
@@ -11,63 +11,92 @@ import OpacityIcon from '@mui/icons-material/Opacity';
 import SettingsIcon from '@mui/icons-material/Settings';
 import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
 import TerminalIcon from '@mui/icons-material/Terminal';
+import ReplayIcon from '@mui/icons-material/Replay';
+import Grid from '@mui/material/Grid';
+import { Stack } from '@mui/material';
 
 export default function Header() {
+
+  const [data, setData] = useState({
+    host: "127.0.0.1",
+    port: 8899,
+    currentEpoch: 0,
+    currentBlock: 0,
+    txCount:0,
+  })
+
+  const fetchData = () => {
+    // TO-DO
+  }
 
   return (
     <>
     <div id="menu">
+      <Grid container spacing={1}>
+        <Grid item xs={8} margin="auto">
+          <NavLink to="accounts/">
+            <PersonIcon fontSize="medium" />
+            Accounts
+          </NavLink>
 
-      <Box width="70%" display="inline-block">
-        <NavLink to="accounts/">
-          <PersonIcon fontSize="medium" sx={{ display: 'inline-flex', mb: '-5px', mr: '3px' }} />
-          Accounts
-        </NavLink>
+          <NavLink to="blocks/">
+            <WidgetsOutlinedIcon fontSize="medium" />
+            Blocks
+          </NavLink>
 
-        <NavLink to="blocks/">
-          <WidgetsOutlinedIcon fontSize="medium" sx={{ display: 'inline-flex', mb: '-5px', mr: '3px' }} />
-          Blocks
-        </NavLink>
+          <NavLink to="txs/">
+            <AssignmentOutlinedIcon fontSize="medium"/>
+            Transactions
+          </NavLink>
 
-        <NavLink to="txs/">
-          <AssignmentOutlinedIcon fontSize="medium" sx={{ display: 'inline-flex', mb: '-5px', mr: '3px' }} />
-          Transactions
-        </NavLink>
+          <NavLink to="faucet/">
+            <OpacityIcon fontSize="medium"/>
+            Faucet
+          </NavLink>
 
-        <NavLink to="faucet/">
-          <OpacityIcon fontSize="medium" sx={{ display: 'inline-flex', mb: '-5px', mr: '3px' }} />
-          Faucet
-        </NavLink>
+          <NavLink to="logs/">
+            <TerminalIcon fontSize="medium"/>
+            Logs
+          </NavLink>
 
-        <NavLink to="logs/">
-          <TerminalIcon fontSize="medium" sx={{ display: 'inline-flex', mb: '-5px', mr: '3px' }} />
-          Logs
-        </NavLink>
+          <NavLink to="wallet/">
+            <AccountBalanceWalletIcon fontSize="medium" />
+            Wallet
+          </NavLink>
+        </Grid>
 
-        <NavLink to="wallet/">
-          <AccountBalanceWalletIcon fontSize="medium" sx={{ display: 'inline-flex', mb: '-5px', mr: '3px' }} />
-          Wallet
-        </NavLink>
-      </Box>
-
-      <Box width="30%" display="inline-block">
-        <Search />
-      </Box>
-
+        <Grid item xs={4} >
+          <Search />
+        </Grid>
+      </Grid>
     </div>
 
     <div id="submenu">
-      <Box width="70%" display="inline-block">
-          <span>RPC Node: 127.0.0.1:8899</span>
-          <span>Current epoch: 0</span>
-          <span>Current blocks: 0</span>
-          <span>Transactions total: 0</span>
-      </Box>
-      <Box width="30%" display="inline-block" textAlign={"center"}>
-        <NavLink to="settings/">
-          <SettingsIcon fontSize="medium" sx={{ mb: '-3px' }} />
-        </NavLink>
-      </Box>
+      <Grid container spacing={1}>
+
+        <Grid item xs={8} margin="auto" >
+            <span>RPC Node: {data.host}:{data.port}</span>
+            <span>Current epoch: {data.currentEpoch}</span>
+            <span>Current blocks: {data.currentBlock}</span>
+            <span>Txs total: {data.txCount}</span>
+        </Grid>
+
+        <Grid item xs={4} textAlign="center" margin={"auto"}>
+        <Stack 
+          direction="row"
+          justifyContent="center"
+          spacing={2}
+          >
+          <NavLink to="start/">
+            <ReplayIcon fontSize="medium" />
+          </NavLink>
+          <NavLink to="settings/">
+            <SettingsIcon fontSize="medium" />
+          </NavLink>
+          </Stack>
+        </Grid>
+
+      </Grid>
     </div>
     </>
   )

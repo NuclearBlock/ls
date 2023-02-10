@@ -7,15 +7,24 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import Skeleton from '@mui/material/Skeleton';
 import TaskAltIcon from '@mui/icons-material/TaskAlt';
 import CancelIcon from '@mui/icons-material/Cancel';
-import { Transaction } from './types';
+import { CopyToClipboard } from "../../components/helpers/CopyToClipBoard";
 import { minimizeStr } from '../../utils/helper';
+
+interface TransactionDummy {
+  signature: string
+  block: string
+  status: boolean,
+  timestamp: string
+  instructions: string
+  fee: number
+}
 
 export default function TransactionListPage() {
 
-  let dummyData:Array<Transaction> = [
+
+  let dummyData:Array<TransactionDummy> = [
     {signature: "s2Khf7AuK8VDiiY65fnVPNg5FTjtUNb5YgEMF2jrsaskF5aELiPqfZmPUKydvWM4Augjoy3kmp72dnK9tAwyc", block:"76804030", status: true, timestamp:"February 09, 2023 03:27:13 +UTC", instructions:"Vote", fee:0},
     {signature: "s2Khf7AuK8VDiiY65fnVPNg5FTjtUNb5YgEMF2jrsaskF5aELiPqfZmPUKydvWM4Augjoy3kmp72dnK9tAwyc", block:"76804031", status: true, timestamp:"February 09, 2023 03:27:13 +UTC", instructions:"Vote", fee:0},
     {signature: "s2Khf7AuK8VDiiY65fnVPNg5FTjtUNb5YgEMF2jrsaskF5aELiPqfZmPUKydvWM4Augjoy3kmp72dnK9tAwyc", block:"76804032", status: true, timestamp:"February 09, 2023 03:27:13 +UTC", instructions:"Vote", fee:0},
@@ -40,23 +49,25 @@ export default function TransactionListPage() {
           <Table size="medium">
             <TableHead>
               <TableRow>
-                <TableCell align="left">Tx signature</TableCell>
-                <TableCell align="left">Block heigth</TableCell>
-                <TableCell align="center">Status</TableCell>
-                <TableCell align="center">Timestamp</TableCell>
-                <TableCell align="center">Instructions</TableCell>
-                <TableCell align="center">Fee</TableCell>
+                <TableCell align="left">TX SIGNATURE</TableCell>
+                <TableCell align="left">BLOCK HEIGHT</TableCell>
+                <TableCell align="center">STATUS</TableCell>
+                <TableCell align="center">TIMESTAMP</TableCell>
+                <TableCell align="center">INSTRUCTIONS</TableCell>
+                <TableCell align="center">FEE</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
               {dummyData.map((item) => (
-                <TableRow hover >
+                <TableRow hover key={item.signature}>
                   <TableCell align="left">
                     {minimizeStr(item.signature, 20, 20)}
+                    <CopyToClipboard textToCopy={item.signature} notification='snackbar' />
                   </TableCell>
 
                   <TableCell align="left">
                     {item.block}
+                    <CopyToClipboard textToCopy={item.block} notification='snackbar' />
                   </TableCell>
 
                   <TableCell align="center">

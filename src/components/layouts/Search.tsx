@@ -47,6 +47,8 @@ export default function Search() {
 
   const handleSearchSubmit = () => {
 
+    // TO_DO
+    
   }
 
   return (
@@ -85,6 +87,9 @@ export default function Search() {
           onChange={(event) => setSearchString(event.target.value)}
           onKeyUp={handleEsc}
           />
+          {/* <IconButton type="submit" disableRipple sx={{position:"absolute", right:"45px"}}>
+            <SearchIcon sx={{ fontSize: "1.2rem" }} />
+          </IconButton> */}
         </form>
 
       </Box>

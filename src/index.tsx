@@ -11,14 +11,24 @@ import BlockDetailsPage from './pages/blocks/BlockDetailsPage';
 import BlockListPage  from './pages/blocks/BlockListPage';
 import TransactionListPage from './pages/transactions/TransactionListPage';
 import TransactionDetailsPage from './pages/transactions/TransactionDetailsPage';
-import SettingsPage from './pages/settings';
+import LogPage from './pages/log/LogPage';
+import SettingsPage from './pages/settings/SettingsPage';
 import FaucetPage from './pages/faucet/FaucetPage';
 import WalletPage from './pages/wallet/WalletPage';
-import { ErrorPage } from './pages/ErrorPage';
+import ErrorPage from './pages/ErrorPage';
+import StartPage from './pages/StartPage';
+import { AppProvider } from './context/main';
 import reportWebVitals from './reportWebVitals';
+import { createTheme } from '@mui/material';
+
 
 
 const router = createBrowserRouter([
+  {
+    path: "start/",
+    element: <StartPage />,
+    errorElement: <ErrorPage />,
+  },
   {
     path: "/",
     element: <App />,
@@ -50,7 +60,7 @@ const router = createBrowserRouter([
       },
       {
         path: "logs/",
-        element: <BlockListPage />,
+        element: <LogPage />,
       },
       {
         path: "wallet/",
@@ -69,7 +79,9 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <AppProvider>
+      <RouterProvider router={router} />
+    </AppProvider>
   </React.StrictMode>
 );
 
